@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Zeroum - IT Solutions</title>
+
+<!-- Google fonts -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+<!-- font awesome -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- bootstrap -->
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+<!-- animate.css -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="assets/animate/animate.css" />
+<link rel="stylesheet" href="assets/animate/set.css" />
+<!-- gallery  -->
+<link rel="stylesheet" href="assets/gallery/blueimp-gallery.min.css">
+<!-- favicon -->
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="assets/style.css">
+
+<style type="text/css">
+  
+  .logo{
+      margin-top: 10px;
+      margin-bottom: 5px;
+  }
+
+  .dn{
+    margin-top: 20px;
+  }
+
+  .neo{
+    margin-top: 30px;
+  }
+
+  .cl{
+    margin-top: 50px;
+  }
+
+  .mapa{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  .drop{
+    border-radius: 10px;
+    width: 314px;
+
+  }
+
+  .box{
+    width: 100px;
+    height: 100px;  
+    text-align: center;
+    background-color: white;   
+    padding-top: 15px;
+  }
+
+  .phone{
+    float: right; 
+    margin-top: 30px; 
+    margin-right: 5px; 
+    padding-left: 10px;
+  } 
+
+    .apoio{
+
+    width: 100px;
+    border-radius: 10px;
+    margin-top: 20px;
+
+  }
+
+/*  alert box  */
+
+#modalContainer {
+    background-color:rgba(0, 0, 0, 0.3);
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:10000;
+    background-image:url(tp.png); /* required by MSIE to prevent actions on lower z-index elements*/
+  }
+
+#alertBox {
+    position:relative;
+    width:300px;
+    min-height:100px;
+    margin-top:50px;
+    border:1px solid #666;
+    background-color:#fff;
+    background-repeat:no-repeat;
+    background-position:20px 30px;
+    border-bottom-left-radius: 20px; 
+    border-bottom-right-radius: 20px;
+}
+
+#modalContainer > #alertBox {
+    position:fixed;
+}
+
+#alertBox > h1 {
+    margin:0;
+    font:bold 0.9em verdana,arial;
+    background-color:#00a9c6;  
+    border-bottom:1px solid #000;
+    padding:2px 0 2px 5px;
+}
+
+#alertBox > p {
+    font:0.7em verdana,arial;
+    height:50px;
+    padding-left:5px;
+    margin-left:55px;
+    margin-top: 30px;
+}
+
+#alertBox #closeBtn {
+    display:block;
+    position:relative;
+    margin:5px auto;
+    padding:7px;
+    border:0 none;
+    width:70px;
+    font:0.7em verdana,arial;
+    text-transform:uppercase;
+    text-align:center;
+    color:#FFF;
+    background-color:#00a9c6;
+    border-radius: 3px;
+    text-decoration:none;
+}
+
+/* unrelated styles */
+
+#mContainer {
+    position:relative;
+    width:600px;
+    margin:auto;
+    padding:5px;
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
+    font:0.7em verdana,arial;
+}
+
+h1 {
+    margin:0;
+    padding:4px;
+    font:bold 1.5em verdana;
+    border-bottom:1px solid #000;
+    color: white;
+}
+
+code {
+    font-size:1.2em;
+    color:#069;
+}
+
+#credits {
+    position:relative;
+    margin:25px auto 0px auto;
+    width:350px; 
+    font:0.7em verdana;
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+    height:90px;
+    padding-top:4px;
+}
+
+#credits img {
+    float:left;
+    margin:5px 10px 5px 0px;
+    border:1px solid #000000;
+    width:80px;
+    height:79px;
+}
+
+.important {
+    background-color:#F5FCC8;
+    padding:2px;
+}
+
+code span {
+    color:green;
+}
+
+
+</style>
+
+<script type="text/javascript">
+
+var ALERT_TITLE = "Linha apoio";
+var ALERT_BUTTON_TEXT = "Ok";
+
+if(document.getElementById) {
+    window.alert = function(txt) {
+        createCustomAlert(txt);
+    }
+}
+
+function createCustomAlert(txt) {
+    d = document;
+
+    if(d.getElementById("modalContainer")) return;
+
+    mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
+    mObj.id = "modalContainer";
+    mObj.style.height = d.documentElement.scrollHeight + "px";
+
+    alertObj = mObj.appendChild(d.createElement("div"));
+    alertObj.id = "alertBox";
+    if(d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
+    alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth)/2 + "px";
+    alertObj.style.visiblity="visible";
+
+    h1 = alertObj.appendChild(d.createElement("h1"));
+    h1.appendChild(d.createTextNode(ALERT_TITLE));
+
+    msg = alertObj.appendChild(d.createElement("p"));
+    //msg.appendChild(d.createTextNode(txt));
+    msg.innerHTML = txt;
+
+    btn = alertObj.appendChild(d.createElement("a"));
+    btn.id = "closeBtn";
+    btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
+    btn.href = "#";
+    btn.focus();
+    btn.onclick = function() { removeCustomAlert();return false; }
+
+    alertObj.style.display = "block";
+
+}
+
+function removeCustomAlert() {
+    document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
+}
+ 
+  
+</script>
+
+</head>
+
+<body>
+<div class="topbar animated fadeInLeftBig"></div>
+
+<!-- Header Starts -->
+<header>
+<nav>
+<div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav">
+          <div class="container">
+            <div class="navbar-header logo">
+              <!-- Logo Starts -->
+              <a class="logo" href="#home"><img src="images/logoneo.png" alt="logo"></a>
+              <!-- #Logo Ends -->
+
+
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+            </div>
+
+
+            <div class="navbar-collapse  collapse">
+              <ul class="nav navbar-nav navbar-right">
+
+                 <li class="active"><a href="#works">Home</a></li>
+                 <li ><a href="#about">Sobre nos</a></li>
+                 <li ><a href="#partners">Clientes</a></li>
+                 <li ><a href="#contact">Contacte-nos</a></li>
+<!-- 
+                  <a href="http://localhost/php/zeroumbackup/suporte.html"> <button class="btn btn-primary apoio" type="button"><span style="margin-left: -30px;">Suporte</span> </button>
+</a>   
+
+                  <li class="dropdown" >
+
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">produtos/Servicos <span class="caret"></span></a>
+                        <ul class="dropdown-menu drop" style="border-radius: 10px; ">
+                            <ul class="list-inline">
+
+                                <li class="box" style=" margin-left: 7px;"><a href="computadores.html"><i class="fa fa-desktop fa-2x" aria-hidden="true"></i></a></li>
+                                <li class="box" ><a href=""><i class="fa fa-keyboard-o fa-2x" aria-hidden="true"></i></a></li>
+                                <li class="box"><a href=""><i class="fa fa-microchip fa-2x" aria-hidden="true"></i></a></li>
+
+                            </ul>
+                            <ul class="list-inline">
+
+                                <li class="box" style=" margin-left: 7px;"><a href=""><i class="fa fa-wifi fa-2x" aria-hidden="true"></i></a></li>
+                                <li class="box"><a href=""><i class="fa fa-video-camera fa-2x" aria-hidden="true"></i></a></li>
+                                <li class="box"><a href=""><i class="fa fa-fax fa-2x" aria-hidden="true"></i></a></li>
+
+                            </ul>
+                            <ul class="list-inline">
+
+                                <li class="box" style=" margin-left: 7px;"><a href=""><i class="fa fa-ambulance fa-2x" aria-hidden="true"></i></a></li>
+                                <li class="box"><a href=""><i class="fa fa-video-camera fa-2x" aria-hidden="true"></i></a></li>
+                                <li class="box"><a href=""><i class="fa fa-fax fa-2x" aria-hidden="true"></i></a></li>
+
+                            </ul>
+                      </ul>
+                              
+                  </li><!-- end dropdown 
+
+                  <div class="phone" onclick="alert('<h4>Telefone: 300 500 434 <br>email: comercial@zeroum.pt</h4>')"><i class="fa fa-phone fa-2x" aria-hidden="true"></i></div>
+                -->
+  </ul>            
+            
+            </div>
+            <!-- #Nav Ends -->
+</nav>
+          </div>
+        </div>
+
+      </div>
+    </div>
+<!-- #Header Starts -->
+
+</header>
+
+
+<!-- works -->
+<div id="works"  class=" clearfix grid"> 
+    <figure class="effect-oscar  wowload fadeIn">
+        <img src="images/portfolio/softwaregestao.png" alt="software de gestao"/>
+        <figcaption>
+            <h2>Software de Gestão</h2>
+            <p>Solucoes adaptadas a sua empresa<br>
+            <a href="images/portfolio/c.png" title="software de gestao" data-gallery>Saiba mais</a></p>            
+        </figcaption>
+    </figure>
+     <figure class="effect-oscar  wowload fadeInUp">
+        <img src="images/portfolio/computadoresTabletsSmartphones.png" alt="computadores"/>
+        <figcaption>
+            <h2 style="font-size: 2.3em;">Computadores</h2>
+            <p>Tablets e Smart Phones<br>
+            <a href="images/portfolio/computadoresTabletsSmartphones.png" title="computadores" data-gallery>Saiba Mais</a></p>            
+        </figcaption>
+    </figure>
+     <figure class="effect-oscar  wowload fadeInUp">
+        <img src="images/portfolio/assistenciatecnica.png" alt="assistenciatecnica"/>
+        <figcaption>
+            <h2>Assistencia tecnica</h2>
+            <p>Sempre ao seu lado<br>
+            <a href="images/portfolio/assistenciatecnica.png" title="assistencia tecnica" data-gallery>Saiba mais</a></p>            
+        </figcaption>
+    </figure>
+     <figure class="effect-oscar  wowload fadeInUp">
+        <img src="images/portfolio/webdevelopment.png" alt="img01"/>
+        <figcaption>
+            <h2>Web Development</h2>
+            <p>Websites & apps <br>
+            <a href="images/portfolio/webdevelopment.png" title="web development" data-gallery>Saiba mais</a></p>            
+        </figcaption>
+    </figure>
+     <figure class="effect-oscar  wowload fadeInUp">
+        <img src="images/portfolio/videovigilancia.png" alt="Video Vigilancia"/>
+        <figcaption>
+            <h2>Video Vigilancia </h2>
+            <p>A Seguranca especializada<br>
+            <a href="images/portfolio/videovigilancia.png" title="Video Vigilancia" data-gallery>Saiba mais</a></p>            
+        </figcaption>
+    </figure>
+     
+     <figure class="effect-oscar  wowload fadeInUp">
+        <img src="images/portfolio/pos.png" alt="img01"/>
+        <figcaption>
+            <h2>Pontos de Venda</h2>
+            <p>Venda, Instalacao e Reparacao <br>
+            <a href="images/portfolio/pos.png" title="ponto de venda" data-gallery>Saiba mais</a></p>            
+        </figcaption>
+    </figure>
+    <figure class="effect-oscar  wowload fadeInUp">
+        <img src="images/portfolio/alojamentoweb.png" alt="img01"/>
+        <figcaption>
+            <h2>Alojamento web</h2>
+            <p>Registo de dominios & web storage<br>
+            <a href="images/portfolio/alojamentoweb.png" title="alojamento web" data-gallery>Saiba mais</a></p>            
+        </figcaption>
+    </figure>
+    <figure class="effect-oscar  wowload fadeInUp">
+        <img src="images/portfolio/impressoras&consumiveis.png" alt="img01"/>
+        <figcaption>
+            <h2 style="color: black;">Impressoras</h2>
+            <p>Consumiveis - Tinteiros, toners <br>
+            <a href="images/portfolio/impressoras&consumiveis.png" title="Impressoras" data-gallery>Saiba mais</a></p>            
+        </figcaption>
+    </figure>
+    <figure class="effect-oscar  wowload fadeInUp">
+        <img src="images/portfolio/logo.png" alt="img01"/>
+
+    </figure>
+     
+</div>
+
+
+
+<div id="about"  class="container spacer about">
+<h2 class="text-center wowload fadeInUp dn">Sobre Nos</h2>  
+  <div class="row">
+      <div class="col-sm-4 wowload fadeInLeft">
+
+        <h4><i class="fa fa-desktop"></i> Fazemos informatica</h4>
+        <p>A Zeroum com sede em Silves, desenvolve, desde 2005, a sua actividade empresarial ao serviço das tecnologias informaticas actuando, nas areas de consultatoria, implementação e asistencia pos-venda a software de gestao e redes estruturadas</p>
+        
+
+      </div>
+
+  <div class="col-sm-4 wowload fadeInRight">
+
+      <h4><i class="fa fa-cogs"></i> Servicos</h4>
+      <p>A ZEROMUM oposta principalmente na formacao dos seus quartos tecnicos, dotando a equipa multidisciplinar de um elevado nivel de competencias, de forma a acompanhar a constante evolução tecnologica.</p>    
+      </div>
+  
+
+    <div class="col-sm-4 wowload fadeInRight">
+    <p>Outra oposta importante e a consolidação de parceiros estrategicos com os principais fabricantes do mercado, que nos colocam na vanguarda do IT, permitindo identificar as necessidades dos nossos clientes, aconselhar as soluções mais adequadas e assegurar a assistencia pos venda de forma eficaz.</p>
+
+    </div>
+</div>
+
+
+  <div class="process">
+
+    <h3 class="text-center wowload fadeInUp">Sistemas operativos</h3>
+        <ul class="row text-center list-inline  wowload bounceInUp">
+            <li>
+                  <span><i class="fa fa-windows"></i><b>windows</b></span>
+              </li>
+              <li>
+                  <span><i class="fa fa-apple"></i><b>apple</b></span>
+              </li>
+               <li>
+                  <span><i class="fa fa-linux"></i><b>Linux</b></span>
+              </li>
+              <li>
+                  <span><i class="fa fa-android"></i><b>android</b></span>
+              </li>
+              <li>
+                  <span><i class="fa fa-database"></i><b>Base dados</b></span>
+              </li>
+                     
+              
+          </ul>
+  </div>
+</div>
+
+
+
+<div class="highlight-info">
+  <div class="overlay spacer">
+    <div class="container">
+      <div class="row text-center  wowload fadeInDownBig">
+
+          <div class="col-sm-3 col-xs-6">
+          <i class="fa fa-smile-o  fa-5x"></i><h4>24 Marcas</h4>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+          <i class="fa fa-rocket  fa-5x"></i><h4>75 Projectos</h4>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+          <i class="fa fa-cloud-download  fa-5x"></i><h4>454 Downloads</h4>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+          <i class="fa fa-map-marker fa-5x"></i><h4>200 Dominios</h4>
+          </div>
+
+ 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div id="partners" class="container spacer cl">
+	<h2 class="text-center  wowload fadeInUp">Os nossos clientes</h2>
+  <div class="clearfix">
+ <!--
+    <div class="col-sm-6 partners  wowload fadeInLeft">
+         <img src="images/partners/1.jpg" alt="partners">
+         <img src="images/partners/2.jpg" alt="partners">
+         <img src="images/partners/3.jpg" alt="partners">
+         <img src="images/partners/4.jpg" alt="partners">
+    </div>
+  --> 
+    <div class="col-sm-12">
+
+
+    <div id="carousel-testimonials" class="carousel slide testimonails  wowload fadeInRight" data-ride="carousel">
+    <div class="carousel-inner">  
+      <div class="item active animated bounceInRight row">
+      <div class="animated slideInLeft col-xs-2"><img alt="portfolio" src="images/team/1.jpg" width="100" class="img-circle img-responsive"></div>
+      <div  class="col-xs-10">
+      <p>Empresa com profissionais que garantem um serviço de qualidade e excelência. Muito satisfeita com os serviços que contratei, nomeadamente a instalação de um sistema de vigilância na nossa quinta. Recomendo. </p>      
+      <span>Claudia Pires - <b>Lisboa </b></span>
+      </div>
+      </div>
+      <div class="item  animated bounceInRight row">
+      <div class="animated slideInLeft col-xs-2"><img alt="portfolio" src="images/team/2.jpg" width="100" class="img-circle img-responsive"></div>
+      <div  class="col-xs-10">
+      <p>Foi um prazer trabalhar com esta loja que tornou a minha casa bastante mais confortavel, agora passo todos os fins de semana com a minha familia coisa que antes era dificil devido ao meu trabalho, assim esta tudo aqui e posso trabalhar em casa sem preocupacoes de desapontar os meus clientes.</p>
+      <span>Pedro Ribeiro - <b>Designer de interiores</b></span>
+      </div>
+      </div>
+      <div class="item  animated bounceInRight row">
+      <div class="animated slideInLeft  col-xs-2"><img alt="portfolio" src="images/team/3.jpg" width="100" class="img-circle img-responsive"></div>
+      <div  class="col-xs-10">
+      <p>Esta loja foi-me recomendada pelas minha filhas que adoraram os servicos prestados por eles, tornamo-nos clientes assiduos e ja nem passamos sem passar la. </p>
+      <span>Jose Antunes - <b>Silves</b></span>
+      </div>
+      </div>
+  </div>
+
+
+   	<ol class="carousel-indicators">
+    <li data-target="#carousel-testimonials" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-testimonials" data-slide-to="1"></li>
+    <li data-target="#carousel-testimonials" data-slide-to="2"></li>
+  	</ol>
+  
+  </div>
+
+
+
+    </div>
+  </div>
+
+
+<!-- equipa -->
+<h3 class="text-center  wowload fadeInUp">A nossa equipa</h3>
+<p class="text-center  wowload fadeInLeft">Aqui pronta a satisfazer as suas necessidades</p>
+<div class="row grid team  wowload fadeInUpBig">	
+	<div class=" col-sm-3 col-xs-6">
+	<figure class="effect-chico">
+        <img src="images/team/10.jpg" alt="img01" class="img-responsive" />
+        <figcaption>
+            <p><b>Luis Filipe</b><br>General manager<br><br><a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a></p>            
+        </figcaption>
+    </figure>
+    </div>
+
+    <div class=" col-sm-3 col-xs-6">
+	<figure class="effect-chico">
+        <img src="images/team/8.jpg" alt="img01"/>
+        <figcaption>            
+            <p><b>Sonia </b><br>General manager<br><br><a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a></p>            
+        </figcaption>
+    </figure>
+    </div>
+
+    <div class=" col-sm-3 col-xs-6">
+	<figure class="effect-chico">
+        <img src="images/team/12.jpg" alt="img01"/>
+        <figcaption>
+            <p><b>Ricardo Correia</b><br>Consultor comercial<br><br><a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a></p>          
+        </figcaption>
+    </figure>
+    </div>
+
+    <div class=" col-sm-3 col-xs-6">
+	<figure class="effect-chico">
+        <img src="images/team/17.jpg" alt="img01"/>
+        <figcaption>
+            <p><b>Jorge Pereira</b><br>Tecnico de informatico<br><br><a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a></p>
+        </figcaption>
+    </figure>
+    </div>
+
+
+</div>
+<!-- team -->
+
+</div>
+
+
+<!--Contactos-->
+<form  method="post" action="sms.php">
+        <div id="contact" class="spacer">
+
+        <div class="container contactform center neo">
+
+        <h2 class="text-center  wowload fadeInUp">Contacte-nos</h2>
+
+            <div class="row wowload fadeInLeftBig">      
+                <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
+                  <input type="text" name="nome" placeholder="Nome">
+                  <input type="text" name="empresa" placeholder="Empresa">
+                  <textarea rows="5" name="mensagem" placeholder="Mensagem"></textarea>
+                  <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Enviar</button>
+                </div>
+            </div>
+
+
+           </div>
+    
+    </div>
+</form>
+<!--Contactos fim-->
+
+<div class="mapa">
+
+<h3 style="text-align: center;">Como nos encontrar ?</h3>
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+function myMap() {
+var mapProp= {
+    center:new google.maps.LatLng(37.186055, -8.440430),
+    zoom:40,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADWnQl73IkRZlwKQ3yZR6b_uslecH-FX4&callback=myMap"></script>  
+
+</div>
+
+<footer>
+      <div class="footer text-center spacer">
+      <p class="wowload flipInX"><a href="https://www.facebook.com/" target="blank"><i class="fa fa-facebook fa-2x"></i></a> <a href="https://www.instagram.com/?hl=pt" target="_blank"><i class="fa fa-instagram fa-2x"></i></a> <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-2x"></i></a> <a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a> </p>
+      Copyright 2017 Zeroum. All rights reserved.
+      <address>
+          <br>
+          <p> EN 124, Av. Marginal, Lote 6 , Edificio Plazza , Loja F, 8300-101 Silves</p>
+
+      </address>
+      </div>
+</footer>
+
+<a href="#works" class="gototop "><i class="fa fa-angle-up  fa-3x"></i></a>
+
+
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+  
+    <div class="slides"></div>
+
+    <h3 class="title">Title</h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+
+</div>
+
+
+<!-- jquery 
+<script src="assets/jquery.js"></script>
+-->
+<!-- wow script -->
+<script src="assets/wow/wow.min.js"></script>
+
+
+<!-- boostrap 
+<script src="assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
+
+<!-- jquery mobile -->
+<script src="assets/mobile/touchSwipe.min.js"></script>
+<script src="assets/respond/respond.js"></script>
+
+<!-- gallery -->
+<script src="assets/gallery/jquery.blueimp-gallery.min.js"></script>
+
+<!-- custom script -->
+<script src="assets/script.js"></script>
+
+</body>
+</html>

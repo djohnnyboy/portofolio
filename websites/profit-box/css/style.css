@@ -1,0 +1,14 @@
+.textB{
+	color:black;
+	font-size: 60%;
+}
+
+.alto{
+	margin-top: 100px;
+}
+
+.line{
+	background-color: grey;
+	height: 3px;
+	width: 100px;
+}
